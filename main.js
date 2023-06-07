@@ -1,5 +1,6 @@
 import nivel1 from "./assets/scenes/nivel1.js";
 
+
 // Create a new Phaser config object
 const config = {
   type: Phaser.AUTO,
