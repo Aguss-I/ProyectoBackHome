@@ -10,10 +10,29 @@ export default class Perder extends Phaser.Scene {
  create(){
     this.add.image(400,300,"perder");
     let botonP = this.add.image(250,450, "bPerder").setInteractive()
+    botonP.on("pointerover", () => {
+      botonP.setTint("#ffffff");
+  });
+
+  botonP.on("pointerout", () => {
+      botonP.clearTint();
+  });
     botonP.on("pointerdown", () => {
+      
        this.scene.start("nivel1");})
         
     
+    let botonM = this.add.image(500,450,"menuprincipal").setInteractive()
+    botonM.on("pointerover", () => {
+      botonM.setTint("#ffffff");
+  });
+    botonM.on("pointerout",() => {
+      botonM.clearTint();
+   });
+   botonM.on("pointerdown",()=> {
+      this.scene.stop("nivel1")
+      this.scene.start("menuprincipalpantalla");
+   });
     
  }
 

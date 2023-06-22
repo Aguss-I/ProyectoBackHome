@@ -7,21 +7,25 @@ export default class nivel1 extends Phaser.Scene {
 
   init() {
     this.vida = 3;
-    this.vida3=true
-    this.vida2=true
-    this.vida1=true
-  
+    this.vida3 = true;
+    this.vida2 = true;
+    this.vida1 = true;
+    this.cuentaRegresiva = 0;
   }
 
   create() {
     const map = this.make.tilemap({ key: "nivel1" });
     //Primero se pone el nombre del conjunto del tile (fondo). Luego, el nombre de la key de la imagen precargada (tilesFondo)
+
     const capaFondo = map.addTilesetImage("fondo", "tilesFondo");
+    const capaCarteles = map.addTilesetImage("carteles", "Carteles");
     const capaPlataformas = map.addTilesetImage(
       "plataforma",
       "tilesPlataforma"
     );
+
     const fondoLayer = map.createLayer("fondo", capaFondo, 0, 0);
+    const cartelLayer = map.createLayer("carteles", capaCarteles, 0, 0);
     const plataformaLayer = map.createLayer(
       "plataforma",
       capaPlataformas,
@@ -54,19 +58,8 @@ export default class nivel1 extends Phaser.Scene {
             .create(x, y, "tacho")
             .setScale(0.8);
           break;
-          
         }
-        
       }
-     
-      
-      
-      
-      
-      
-
-      
-     
     });
 
     this.physics.add.collider(this.obstaculos, plataformaLayer);
@@ -81,15 +74,9 @@ export default class nivel1 extends Phaser.Scene {
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "letrero");
     console.log(spawnPoint);
     // The player and its settings
-    this.salida = this.physics.add.sprite(
-      spawnPoint.x,
-      spawnPoint.y,
-      "salida"
-      
-      
-    )
-    
-    this.physics.add.collider(this.salida, plataformaLayer)
+    this.salida = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "salida");
+
+    this.physics.add.collider(this.salida, plataformaLayer);
 
     this.jugador.setCollideWorldBounds(true);
 
@@ -101,70 +88,84 @@ export default class nivel1 extends Phaser.Scene {
       null,
       this
     );
-    
+
     this.physics.add.overlap(
       this.jugador,
       this.salida,
       this.nivelSuperado,
       null,
       this
-    )
-      
-    
+    );
+
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    
     this.cameras.main.startFollow(this.jugador);
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    
-    this.vida1 = this.add.image(150,25,"corazon");
-    this.vida2=this.add.image(135,25,"corazon2");
-    this.vida3=this.add.image(122,25,"corazon3");
-    this.vida3.setScrollFactor(0)
-    this.vida2.setScrollFactor(0)
-    this.vida1.setScrollFactor(0)
-    this.isJumping=false 
+
+    this.vida1 = this.add.image(150, 25, "corazon");
+    this.vida2 = this.add.image(135, 25, "corazon2");
+    this.vida3 = this.add.image(122, 25, "corazon3");
+    this.vida3.setScrollFactor(0);
+    this.vida2.setScrollFactor(0);
+    this.vida1.setScrollFactor(0);
+    this.isJumping = false;
+    this.cuentaRegresivaTexto = this.add.text(300, 200, "5", {
+      fontSize: "400px",
+    });
+    this.time.addEvent({
+      delay: 1000,
+      callback: this.timmer,
+      callbackScope: this,
+      loop: true,
+    });
   }
   update() {
-    const onGround = this.jugador.body.blocked.down || this.jugador.body.touching.down;
+    const onGround =
+      this.jugador.body.blocked.down || this.jugador.body.touching.down;
+    
+      if (onGround) {
+        this.isJumping = false;
+      }
+  
+      if (!this.isJumping) {
+        this.jugador.anims.play("caminata", true);
+        this.jugador.setVelocityX(200);
+  
+        if (this.cursors.space.isDown && onGround) {
+          this.jugador.setVelocityY(-400);
+          this.isJumping = true;
+          this.jugador.anims.stop();
+          this.jugador.anims.play("salto", true);
+        }
+      }
+    
 
-  if (onGround) {
-    this.isJumping = false;
-  }
-
-  if (!this.isJumping) {
-    this.jugador.anims.play("caminata", true);
-    this.jugador.setVelocityX(200);
-
-    if (this.cursors.space.isDown && onGround) {
-      this.jugador.setVelocityY(-400);
-      this.isJumping = true;
-      this.jugador.anims.stop();
-      this.jugador.anims.play("salto", true);
-    }
-  }
+    
   }
 
   vidamenos(jugador, obstaculos) {
     obstaculos.disableBody(true, true);
     this.vida--;
-    if(this.vida==2){
-     this.vida1.setVisible(false) 
+    if (this.vida == 2) {
+      this.vida1.setVisible(false);
+    } else if (this.vida == 1) {
+      this.vida2.setVisible(false);
     }
-    else if(this.vida==1){
-      this.vida2.setVisible(false)
-    }
-    
+
     if (this.vida <= 0) {
-      this.vida3= false
+      this.vida3 = false;
       this.scene.pause("nivel1");
       this.scene.launch("perder");
     }
-    this.isJumping= false
+    this.isJumping = false;
   }
   nivelSuperado(jugador, salida) {
     salida.disableBody(true, true);
+  }
+  timmer() {
+    this.cuentaRegresiva--;
+    this.cuentaRegresivaTexto.setText(5 + this.cuentaRegresiva);
     
   }
 }

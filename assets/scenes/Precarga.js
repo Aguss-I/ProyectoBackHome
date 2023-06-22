@@ -20,7 +20,7 @@ preload() {
       frameHeight: 180,
     });
     this.load.spritesheet("jugador", "./public/Images/perrito.png", {
-      frameWidth: 142,
+      frameWidth: 150,
       frameHeight: 149,
     });
     this.load.image("perder","./public/Images/pantallaperder.png");
@@ -29,6 +29,15 @@ preload() {
     this.load.image("corazon","./public/Images/corazon.png");
     this.load.image("corazon2","./public/Images/corazon2.png");
     this.load.image("corazon3","./public/Images/corazon3.png");
+    this.load.image("menuprincipal","./public/Images/MenúPrincipalB.png");
+    this.load.image("Menuprincipalpantalla","./public/Images/MenúPrincipal.png");
+    this.load.image("botonjugar","./public/Images/BotonJugar.png");
+    this.load.image("botoncreditos","./public/Images/BotonCreditos.png");
+    this.load.image("pantallacreditos","./public/Images/Pantallacreditos.png");
+    this.load.image("flechasalir","./public/Images/flechasalir.png");
+    this.load.image("botontutorial","./public/Images/BotonTutorial.png");
+    this.load.image("pantallatutorial","./public/Images/Tutorial.png");
+    this.load.image("Carteles","./public/Images/carteles.png");
 
 }
 create(){
