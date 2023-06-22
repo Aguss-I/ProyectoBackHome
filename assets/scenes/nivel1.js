@@ -10,7 +10,9 @@ export default class nivel1 extends Phaser.Scene {
     this.vida3 = true;
     this.vida2 = true;
     this.vida1 = true;
-    this.cuentaRegresiva = 0;
+    this.cuentaRegresiva = 5;
+    
+    
   }
 
   create() {
@@ -110,8 +112,8 @@ export default class nivel1 extends Phaser.Scene {
     this.vida2.setScrollFactor(0);
     this.vida1.setScrollFactor(0);
     this.isJumping = false;
-    this.cuentaRegresivaTexto = this.add.text(300, 200, "5", {
-      fontSize: "400px",
+    this.cuentaRegresivaTexto = this.add.text(300, 180, "5", {
+      fontSize: "300px",fill:("#000000"),
     });
     this.time.addEvent({
       delay: 1000,
@@ -128,9 +130,12 @@ export default class nivel1 extends Phaser.Scene {
         this.isJumping = false;
       }
   
-      if (!this.isJumping) {
-        this.jugador.anims.play("caminata", true);
-        this.jugador.setVelocityX(200);
+       if (!this.isJumping) {
+        if(this.cuentaRegresiva <= 0){
+          this.jugador.anims.play("caminata", true);
+          this.jugador.setVelocityX(400);
+          
+        }      
   
         if (this.cursors.space.isDown && onGround) {
           this.jugador.setVelocityY(-400);
@@ -138,11 +143,18 @@ export default class nivel1 extends Phaser.Scene {
           this.jugador.anims.stop();
           this.jugador.anims.play("salto", true);
         }
-      }
+        
+        
+      };
+      
+
+      
+       
     
 
     
   }
+  
 
   vidamenos(jugador, obstaculos) {
     obstaculos.disableBody(true, true);
@@ -162,10 +174,19 @@ export default class nivel1 extends Phaser.Scene {
   }
   nivelSuperado(jugador, salida) {
     salida.disableBody(true, true);
+    this.scene.pause(this.nivelActualNombre)
+    this.scene.launch("siguientenivel")
+    
+
   }
   timmer() {
     this.cuentaRegresiva--;
-    this.cuentaRegresivaTexto.setText(5 + this.cuentaRegresiva);
+    this.cuentaRegresivaTexto.setText( + this.cuentaRegresiva)
+    if (this.cuentaRegresiva <= 0) {
+      this.cuentaRegresivaTexto.setVisible(false);
+    }
+      
+    
     
   }
 }

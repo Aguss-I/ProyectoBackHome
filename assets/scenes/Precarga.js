@@ -6,7 +6,9 @@ export default class precarga extends Phaser.Scene {
     }
 
 
-
+init(){
+  const niveles = ["nivel1","nivel2"];
+}
 
 
 preload() {
@@ -14,6 +16,7 @@ preload() {
     this.load.image("tacho", "./public/Images/Tacho.png");
 
     this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/Nivel1.json");
+    this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/Nivel2.json");
     this.load.image("tilesFondo", "./public/Images/Fondonivel1.png");
     this.load.spritesheet("caja", "./public/Images/caja.png", {
       frameWidth: 160,
@@ -38,7 +41,12 @@ preload() {
     this.load.image("botontutorial","./public/Images/BotonTutorial.png");
     this.load.image("pantallatutorial","./public/Images/Tutorial.png");
     this.load.image("Carteles","./public/Images/carteles.png");
-
+    this.load.image("tilesFondo2","./public/Images/nivel 2.png");
+    this.load.image("Siguientenivel","./public/Images/Pantallaganar.png");
+    this.load.image("Bsiguientenivel","./public/Images/BotonSiguienteNivel.png");
+    this.load.image("hidrante","./public/Images/Hidrante.png");
+    this.load.image("perder2","./public/Images/pantallaperder2.png");
+    
 }
 create(){
     this.anims.create({
@@ -52,6 +60,6 @@ create(){
         frames: [{ key: "jugador", frame: 2 }],
         frameRate: 0,
       });
-      this.scene.start("nivel1");
+      this.scene.start("menuprincipalpantalla");
 }
 }
