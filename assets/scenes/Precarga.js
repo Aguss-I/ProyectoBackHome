@@ -60,6 +60,6 @@ create(){
         frames: [{ key: "jugador", frame: 2 }],
         frameRate: 0,
       });
-      this.scene.start("menuprincipalpantalla");
+      this.scene.start("nivel1");
 }
 }

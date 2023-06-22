@@ -167,14 +167,14 @@ export default class nivel1 extends Phaser.Scene {
 
     if (this.vida <= 0) {
       this.vida3 = false;
-      this.scene.pause("nivel1");
+      this.scene.stop("nivel1");
       this.scene.launch("perder");
     }
     this.isJumping = false;
   }
   nivelSuperado(jugador, salida) {
     salida.disableBody(true, true);
-    this.scene.pause(this.nivelActualNombre)
+    this.scene.pause("nivel1")
     this.scene.launch("siguientenivel")
     
 
