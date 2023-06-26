@@ -23,7 +23,7 @@ preload() {
       frameHeight: 180,
     });
     this.load.spritesheet("jugador", "./public/Images/perrito.png", {
-      frameWidth: 150,
+      frameWidth: 152,
       frameHeight: 149,
     });
     this.load.image("perder","./public/Images/pantallaperder.png");
@@ -46,9 +46,16 @@ preload() {
     this.load.image("Bsiguientenivel","./public/Images/BotonSiguienteNivel.png");
     this.load.image("hidrante","./public/Images/Hidrante.png");
     this.load.image("perder2","./public/Images/pantallaperder2.png");
+    this.load.spritesheet("jugadorherido", "./public/Images/perritoherido.png", {
+      frameWidth: 150,
+      frameHeight: 149,
+    });
     
 }
 create(){
+  
+
+  
     this.anims.create({
         key: "caminata",
         frames: this.anims.generateFrameNumbers("jugador", { start: 0, end: 1 }),
@@ -59,6 +66,14 @@ create(){
         key: "salto",
         frames: [{ key: "jugador", frame: 2 }],
         frameRate: 0,
+      });
+     
+      this.anims.create({
+        key: "choque",
+        frames: [{ key: "jugador", frame: 3 }],
+        frameRate: 0,
+        
+        
       });
       this.scene.start("menuprincipalpantalla");
 }

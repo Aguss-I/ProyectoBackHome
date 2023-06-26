@@ -105,8 +105,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":508.424242424242,
-                 "y":370.939393939395
+                 "x":587.090909090909,
+                 "y":401.606060606062
                 }, 
                 {
                  "height":0,
@@ -117,8 +117,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1004.33333333333,
-                 "y":365.666666666667
+                 "x":1544.33333333333,
+                 "y":395.666666666667
                 }, 
                 {
                  "height":0,
@@ -135,8 +135,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1417.66666666667,
-                 "y":345.333333333334
+                 "x":2915.66666666667,
+                 "y":363.333333333334
                 }, 
                 {
                  "height":0,
@@ -153,8 +153,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":9655.06060606061,
-                 "y":435.106060606061
+                 "x":10309.7272727273,
+                 "y":452.439393939394
                 }, 
                 {
                  "height":0,
@@ -177,8 +177,242 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1790.90909090909,
-                 "y":381.818181818182
+                 "x":1144.24242424242,
+                 "y":399.151515151515
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"hidrante",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":4281.0303030303,
+                 "y":379.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"caja",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":5436.36363636364,
+                 "y":364.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"tacho",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1900.36363636364,
+                 "y":388.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"tacho",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":7602.36363636364,
+                 "y":378.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"caja",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2826.36363636364,
+                 "y":366.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"hidrante",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2416.36363636364,
+                 "y":368.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"hidrante",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":8976.36363636364,
+                 "y":380.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":21,
+                 "name":"tacho",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3288.36363636364,
+                 "y":366.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"caja",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3768.36363636364,
+                 "y":380.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"caja",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":5822.36363636364,
+                 "y":386.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":24,
+                 "name":"hidrante",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":4694.36363636364,
+                 "y":376.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":25,
+                 "name":"hidrante",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":6266.36363636364,
+                 "y":376.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":26,
+                 "name":"caja",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":8594.36363636364,
+                 "y":380.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":27,
+                 "name":"tacho",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":5086.36363636364,
+                 "y":370.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":28,
+                 "name":"tacho",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":8108.36363636364,
+                 "y":374.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":29,
+                 "name":"caja",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":7190.36363636364,
+                 "y":396.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"hidrante",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":6732.36363636364,
+                 "y":390.666666666667
                 }],
          "offsetx":63.636363636364,
          "offsety":33.3333333333334,
@@ -189,7 +423,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":11,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",

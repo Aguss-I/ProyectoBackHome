@@ -140,12 +140,12 @@ export default class nivel2 extends Phaser.Scene {
          if (!this.isJumping) {
             if(this.cuentaRegresiva <= 0){
                 this.jugador.anims.play("caminata", true);
-                this.jugador.setVelocityX(400);
+                this.jugador.setVelocityX(500);
                 
               }      
         
               if (this.cursors.space.isDown && onGround) {
-                this.jugador.setVelocityY(-400);
+                this.jugador.setVelocityY(-550);
                 this.isJumping = true;
                 this.jugador.anims.stop();
                 this.jugador.anims.play("salto", true);
@@ -160,6 +160,8 @@ export default class nivel2 extends Phaser.Scene {
     }
     
     vidamenos(jugador, obstaculos) {
+      this.jugador.anims.play("golpe",true)
+   this.jugador.anims.stop(true )
       obstaculos.disableBody(true, true);
       this.vida--;
       if (this.vida == 2) {

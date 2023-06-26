@@ -18,6 +18,7 @@ export default class Siguientenivel extends Phaser.Scene {
       botonP.clearTint();
   });
     botonP.on("pointerdown", () => {
+      this.scene.stop("nivel1");
       
        this.scene.start("nivel2");})
         

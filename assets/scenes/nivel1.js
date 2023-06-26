@@ -58,7 +58,7 @@ export default class nivel1 extends Phaser.Scene {
           // console.log("estrella agregada: ", x, y);
           const obstaculo1 = this.obstaculos
             .create(x, y, "tacho")
-            .setScale(0.8);
+            .setScale(0.7);
           break;
         }
       }
@@ -138,7 +138,7 @@ export default class nivel1 extends Phaser.Scene {
         }      
   
         if (this.cursors.space.isDown && onGround) {
-          this.jugador.setVelocityY(-400);
+          this.jugador.setVelocityY(-550);
           this.isJumping = true;
           this.jugador.anims.stop();
           this.jugador.anims.play("salto", true);
@@ -157,6 +157,9 @@ export default class nivel1 extends Phaser.Scene {
   
 
   vidamenos(jugador, obstaculos) {
+    
+   this.jugador.anims.play("choque",true)
+   this.jugador.anims.stop(true )
     obstaculos.disableBody(true, true);
     this.vida--;
     if (this.vida == 2) {
