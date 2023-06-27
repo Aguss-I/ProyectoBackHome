@@ -47,7 +47,7 @@ export default class nivel2 extends Phaser.Scene {
           // add star to scene
           // console.log("estrella agregada: ", x, y);
           const obstaculo1 = this.obstaculos
-            .create(x, y, "Caja")
+            .create(x, y, "caja")
             .setScale(0.7)
             .setSize(120, 120);
           break;

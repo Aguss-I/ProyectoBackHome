@@ -12,9 +12,10 @@ init(){
 
 
 preload() {
+  
     this.load.image("tilesPlataforma", "./public/Images/plataforma.png");
     this.load.image("tacho", "./public/Images/Tacho.png");
-    this.load.image("Caja", "./public/Images/caja.png");
+    this.load.image("caja", "./public/Images/Caja.png");
 
     this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/Nivel1.json");
     this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/nivel2.json");
@@ -52,23 +53,7 @@ preload() {
     
 }
 create(){
-  let preloaderCutscene = this.add.video(400, 300, "presentacion").setInteractive();
-
-    const scaleWidth = this.cameras.main.width / preloaderCutscene.width;
-    const scaleHeight = this.cameras.main.height / preloaderCutscene.height;
-    const scaleFactor = Math.min(scaleWidth, scaleHeight);
-
-    preloaderCutscene.setScale(scaleFactor);
-
-    preloaderCutscene.play() 
-
-    preloaderCutscene.on('complete', () => {
-      this.scene.start("menuprincipalpantalla");
-    });
-
-    preloaderCutscene.on('pointerdown', () => {
-      this.scene.start("menuprincipalpantalla");
-    });
+  
   
   
 
@@ -92,6 +77,23 @@ create(){
         
         
       });
+      let preloaderCutscene = this.add.video(400, 300, "presentacion").setInteractive();
+
+    const scaleWidth = this.cameras.main.width / preloaderCutscene.width;
+    const scaleHeight = this.cameras.main.height / preloaderCutscene.height;
+    const scaleFactor = Math.min(scaleWidth, scaleHeight);
+
+    preloaderCutscene.setScale(scaleFactor);
+
+    preloaderCutscene.play() 
+
+    preloaderCutscene.on('complete', () => {
+      this.scene.start("menuprincipalpantalla");
+    });
+
+    preloaderCutscene.on('pointerdown', () => {
+      this.scene.start("menuprincipalpantalla");
+    });
       
     
       // Verifica el tiempo actual del video y realiza acciones adicionales si es necesario
