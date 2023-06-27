@@ -14,11 +14,12 @@ init(){
 preload() {
     this.load.image("tilesPlataforma", "./public/Images/plataforma.png");
     this.load.image("tacho", "./public/Images/Tacho.png");
-
-    this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/Nivel1.json");
-    this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/Nivel2.json");
-    this.load.image("tilesFondo", "./public/Images/Fondonivel1.png");
     this.load.image("caja", "./public/Images/caja.png");
+
+    this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/nivel1.json");
+    this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/nivel2.json");
+    this.load.image("tilesFondo", "./public/Images/Fondonivel1.png");
+    
       
     this.load.spritesheet("jugador", "./public/Images/perrito.png", {
       frameWidth: 152,
@@ -39,7 +40,7 @@ preload() {
     this.load.image("botontutorial","./public/Images/BotonTutorial.png");
     this.load.image("pantallatutorial","./public/Images/Tutorial.png");
     this.load.image("Carteles","./public/Images/carteles.png");
-    this.load.image("tilesFondo2","./public/Images/nivel 2.png");
+    this.load.image("tilesFondo2","./public/Images/nivel2.png");
     this.load.image("Siguientenivel","./public/Images/Pantallaganar.png");
     this.load.image("Bsiguientenivel","./public/Images/BotonSiguienteNivel.png");
     this.load.image("hidrante","./public/Images/Hidrante.png");
