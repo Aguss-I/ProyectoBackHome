@@ -67,7 +67,7 @@ create(){
     });
 
     preloaderCutscene.on('pointerdown', () => {
-      this.scene.start("nivel2");
+      this.scene.start("menuprincipalpantalla");
     });
   
   
