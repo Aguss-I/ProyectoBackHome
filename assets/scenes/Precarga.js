@@ -7,7 +7,7 @@ export default class precarga extends Phaser.Scene {
 
 
 init(){
-  const niveles = ["nivel1","nivel2"];
+  
 }
 
 
@@ -40,7 +40,7 @@ preload() {
     this.load.image("botontutorial","./public/Images/BotonTutorial.png");
     this.load.image("pantallatutorial","./public/Images/Tutorial.png");
     this.load.image("Carteles","./public/Images/carteles.png");
-    this.load.image("tilesFondo2","./public/Images/nivel2.png");
+    this.load.image("tilesFondo2","./public/Images/nivel 2.png");
     this.load.image("Siguientenivel","./public/Images/Pantallaganar.png");
     this.load.image("Bsiguientenivel","./public/Images/BotonSiguienteNivel.png");
     this.load.image("hidrante","./public/Images/Hidrante.png");
@@ -67,7 +67,7 @@ create(){
     });
 
     preloaderCutscene.on('pointerdown', () => {
-      this.scene.start("menuprincipalpantalla");
+      this.scene.start("nivel2");
     });
   
   
