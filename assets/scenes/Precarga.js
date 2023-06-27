@@ -18,10 +18,8 @@ preload() {
     this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/Nivel1.json");
     this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/Nivel2.json");
     this.load.image("tilesFondo", "./public/Images/Fondonivel1.png");
-    this.load.spritesheet("caja", "./public/Images/caja.png", {
-      frameWidth: 160,
-      frameHeight: 180,
-    });
+    this.load.image("caja", "./public/Images/caja.png");
+      
     this.load.spritesheet("jugador", "./public/Images/perrito.png", {
       frameWidth: 152,
       frameHeight: 149,
