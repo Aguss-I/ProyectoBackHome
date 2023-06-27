@@ -14,7 +14,7 @@ init(){
 preload() {
     this.load.image("tilesPlataforma", "./public/Images/plataforma.png");
     this.load.image("tacho", "./public/Images/Tacho.png");
-    this.load.image("caja", "./public/Images/caja.png");
+    this.load.image("Caja", "./public/Images/caja.png");
 
     this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/Nivel1.json");
     this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/nivel2.json");
