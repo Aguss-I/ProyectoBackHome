@@ -16,7 +16,7 @@ preload() {
     this.load.image("tacho", "./public/Images/Tacho.png");
     this.load.image("caja", "./public/Images/caja.png");
 
-    this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/nivel1.json");
+    this.load.tilemapTiledJSON("nivel1", "./public/tilemaps/Nivel1.json");
     this.load.tilemapTiledJSON("nivel2", "./public/tilemaps/nivel2.json");
     this.load.image("tilesFondo", "./public/Images/Fondonivel1.png");
     
@@ -67,7 +67,7 @@ create(){
     });
 
     preloaderCutscene.on('pointerdown', () => {
-      this.scene.start("nivel2");
+      this.scene.start("menuprincipalpantalla");
     });
   
   
