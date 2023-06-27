@@ -24,7 +24,7 @@ export default class nivel2 extends Phaser.Scene {
       "tilesPlataforma"
     );
 
-    const fondoLayer = map.createLayer("fondo", capaFondo, 0, 0);
+    const fondoLayer = map.createLayer("fondo2", capaFondo, 0, 0);
     const cartelLayer = map.createLayer("carteles", capaCarteles, 0, 0);
     const plataformaLayer = map.createLayer(
       "plataforma",
