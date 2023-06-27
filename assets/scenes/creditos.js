@@ -9,7 +9,7 @@ init(){}
 
 create(){
     this.add.image(400,300 , "pantallacreditos");
-    let botonS= this.add.image(200,440,"flechasalir").setInteractive()
+    let botonS= this.add.image(200,440,"flechasalir").setInteractive().setScale(0.6)
     botonS.on("pointerover", () => {
         botonS.setTint("#ffffff");
     });

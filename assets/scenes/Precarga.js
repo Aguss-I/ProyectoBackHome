@@ -46,13 +46,31 @@ preload() {
     this.load.image("Bsiguientenivel","./public/Images/BotonSiguienteNivel.png");
     this.load.image("hidrante","./public/Images/Hidrante.png");
     this.load.image("perder2","./public/Images/pantallaperder2.png");
-    this.load.spritesheet("jugadorherido", "./public/Images/perritoherido.png", {
-      frameWidth: 150,
-      frameHeight: 149,
-    });
+    this.load.image("final","./public/Images/casa.png");
+    this.load.video("presentacion","./public/Images/Videoprecarga.mp4");
+    this.load.image("pantallafinal","./public/Images/Final.png");
+   
     
 }
 create(){
+  let preloaderCutscene = this.add.video(400, 300, "presentacion").setInteractive();
+
+    const scaleWidth = this.cameras.main.width / preloaderCutscene.width;
+    const scaleHeight = this.cameras.main.height / preloaderCutscene.height;
+    const scaleFactor = Math.min(scaleWidth, scaleHeight);
+
+    preloaderCutscene.setScale(scaleFactor);
+
+    preloaderCutscene.play() 
+
+    preloaderCutscene.on('complete', () => {
+      this.scene.start("menuprincipalpantalla");
+    });
+
+    preloaderCutscene.on('pointerdown', () => {
+      this.scene.start("menuprincipalpantalla");
+    });
+  
   
 
   
@@ -65,16 +83,21 @@ create(){
       this.anims.create({
         key: "salto",
         frames: [{ key: "jugador", frame: 2 }],
-        frameRate: 0,
+        frameRate: 10,
       });
      
       this.anims.create({
         key: "choque",
         frames: [{ key: "jugador", frame: 3 }],
-        frameRate: 0,
+        frameRate: 10,
         
         
       });
-      this.scene.start("menuprincipalpantalla");
+      
+    
+      // Verifica el tiempo actual del video y realiza acciones adicionales si es necesario
+    
+      
+      
 }
 }

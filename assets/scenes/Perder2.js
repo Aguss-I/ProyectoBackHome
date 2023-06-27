@@ -16,7 +16,8 @@ export default class Perder2 extends Phaser.Scene {
         botonP.clearTint();
       });
       botonP.on("pointerdown", () => {
-        this.scene.start("nivel2");
+        this.scene.stop("nivel2")
+        this.scene.start("nivel1");
        
         
       });

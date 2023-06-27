@@ -7,6 +7,8 @@ import tutorial from "./assets/scenes/tutorial.js";
 import nivel2 from "./assets/scenes/nivel2.js";
 import Siguientenivel from "./assets/scenes/Siguientenivel.js";
 import Perder2 from "./assets/scenes/Perder2.js";
+import Final from "./assets/scenes/Final.js";
+
 
 
 // Create a new Phaser config object
@@ -29,14 +31,14 @@ const config = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 830 },
-      debug: true,
+      gravity: { y: 1500 },
+      debug: false,
     },
   },
   // List of scenes to load
   // Only the first scene will be shown
   // Remember to import the scene before adding it to the list
-  scene: [Precarga,Menuprincipal,nivel1,nivel2,Siguientenivel,Perder,Perder2,creditos,tutorial,]
+  scene: [Precarga,Menuprincipal,nivel1,nivel2,Siguientenivel,Perder,Perder2,creditos,tutorial,Final]
   
 };
 

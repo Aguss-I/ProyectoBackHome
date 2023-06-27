@@ -11,11 +11,12 @@ export default class nivel1 extends Phaser.Scene {
     this.vida2 = true;
     this.vida1 = true;
     this.cuentaRegresiva = 5;
-    
+    this.isJumping = false;
     
   }
 
   create() {
+    
     const map = this.make.tilemap({ key: "nivel1" });
     //Primero se pone el nombre del conjunto del tile (fondo). Luego, el nombre de la key de la imagen precargada (tilesFondo)
 
@@ -48,7 +49,7 @@ export default class nivel1 extends Phaser.Scene {
         case "caja": {
           // add star to scene
           // console.log("estrella agregada: ", x, y);
-          const obstaculo1 = this.obstaculos.create(x, y, "caja").setScale(0.8);
+          const obstaculo1 = this.obstaculos.create(x, y, "caja").setScale(0.7).setSize(120,120)
           break;
         }
       }
@@ -58,7 +59,7 @@ export default class nivel1 extends Phaser.Scene {
           // console.log("estrella agregada: ", x, y);
           const obstaculo1 = this.obstaculos
             .create(x, y, "tacho")
-            .setScale(0.7);
+            .setScale(0.7).setSize(120,150)
           break;
         }
       }
@@ -72,7 +73,10 @@ export default class nivel1 extends Phaser.Scene {
       spawnPoint.x,
       spawnPoint.y,
       "jugador"
+      
+      
     );
+    this.jugador.body.setSize(130,145)
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "letrero");
     console.log(spawnPoint);
     // The player and its settings
@@ -83,13 +87,13 @@ export default class nivel1 extends Phaser.Scene {
     this.jugador.setCollideWorldBounds(true);
 
     this.physics.add.collider(this.jugador, plataformaLayer);
-    this.physics.add.overlap(
-      this.jugador,
-      this.obstaculos,
-      this.vidamenos,
-      null,
+     this.physics.add.overlap(
+       this.jugador,
+       this.obstaculos,
+       this.vidamenos,
+       null,
       this
-    );
+     );
 
     this.physics.add.overlap(
       this.jugador,
@@ -105,15 +109,16 @@ export default class nivel1 extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    this.vida1 = this.add.image(150, 25, "corazon");
-    this.vida2 = this.add.image(135, 25, "corazon2");
-    this.vida3 = this.add.image(122, 25, "corazon3");
+    this.vida1 = this.add.image(400, 25, "corazon");
+    this.vida2 = this.add.image(385, 25, "corazon2");
+    this.vida3 = this.add.image(372, 25, "corazon3");
     this.vida3.setScrollFactor(0);
     this.vida2.setScrollFactor(0);
     this.vida1.setScrollFactor(0);
     this.isJumping = false;
     this.cuentaRegresivaTexto = this.add.text(300, 180, "5", {
-      fontSize: "300px",fill:("#000000"),
+      fontSize: "300px",
+      fill: "#000000",
     });
     this.time.addEvent({
       delay: 1000,
@@ -121,47 +126,38 @@ export default class nivel1 extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+    
   }
   update() {
-    const onGround =
-      this.jugador.body.blocked.down || this.jugador.body.touching.down;
-    
-      if (onGround) {
+    if (this.cursors.space.isDown && this.jugador.body.blocked.down) {
+      this.jugador.anims.stop(true);
+      this.jugador.anims.play("salto");
+      this.jugador.setVelocityY(-750);
+      this.isJumping= true;
+      if (this.isJumping && this.jugador.body.blocked.down) {
+        this.jugador.anims.stop("salto");
         this.isJumping = false;
       }
-  
-       if (!this.isJumping) {
-        if(this.cuentaRegresiva <= 0){
-          this.jugador.anims.play("caminata", true);
-          this.jugador.setVelocityX(400);
-          
-        }      
-  
-        if (this.cursors.space.isDown && onGround) {
-          this.jugador.setVelocityY(-550);
-          this.isJumping = true;
-          this.jugador.anims.stop();
-          this.jugador.anims.play("salto", true);
-        }
-        
-        
-      };
       
+    }
 
-      
-       
     
-
+      
+      
+    
+   
+    
     
   }
-  
 
   vidamenos(jugador, obstaculos) {
-    
-   this.jugador.anims.play("choque",true)
-   this.jugador.anims.stop(true )
     obstaculos.disableBody(true, true);
+    
+    
+    
     this.vida--;
+    this.jugador.anims.stop(true);
+    this.jugador.anims.play("choque", true);
     if (this.vida == 2) {
       this.vida1.setVisible(false);
     } else if (this.vida == 1) {
@@ -173,23 +169,29 @@ export default class nivel1 extends Phaser.Scene {
       this.scene.pause("nivel1");
       this.scene.launch("perder");
     }
+    setTimeout(() => {
+      this.jugador.anims.stop();
+      this.jugador.anims.play("caminata", true);
+    }, 100);
+    
     this.isJumping = false;
   }
   nivelSuperado(jugador, salida) {
     salida.disableBody(true, true);
-    this.scene.pause("nivel1")
-    this.scene.launch("siguientenivel")
-    
-
+    this.scene.pause("nivel1");
+    this.scene.launch("siguientenivel");
   }
   timmer() {
     this.cuentaRegresiva--;
-    this.cuentaRegresivaTexto.setText( + this.cuentaRegresiva)
+    this.cuentaRegresivaTexto.setText(+this.cuentaRegresiva);
     if (this.cuentaRegresiva <= 0) {
+      this.jugador.anims.play("caminata", true);
+      this.jugador.setVelocityX(400);
+      
+
+      
+        
       this.cuentaRegresivaTexto.setVisible(false);
     }
-      
-    
-    
   }
 }

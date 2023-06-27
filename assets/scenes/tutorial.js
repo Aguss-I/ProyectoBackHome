@@ -6,7 +6,7 @@ export default class tutorial extends Phaser.Scene {
   }
   create(){
     this.add.image(400,300,"pantallatutorial");
-    let botonS= this.add.image(190,440,"flechasalir").setInteractive()
+    let botonS= this.add.image(190,460,"flechasalir").setInteractive().setScale(0.6)
     botonS.on("pointerover", () => {
         botonS.setTint("#ffffff");
     });
