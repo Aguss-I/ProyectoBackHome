@@ -198,7 +198,7 @@ export default class nivel2 extends Phaser.Scene {
     this.cuentaRegresivaTexto.setText(+this.cuentaRegresiva);
     if (this.cuentaRegresiva <= 0) {
       
-      this.jugador.setVelocityX(450);
+      this.jugador.setVelocityX(480);
       if(this.isWaiting) {
         
         this.isWaiting = false;
@@ -206,6 +206,9 @@ export default class nivel2 extends Phaser.Scene {
       this.cuentaRegresivaTexto.setVisible(false);
 
     }
+  }
+  juegoGanado(){
+    this.scene.start("final"); 
   }
     
 }
