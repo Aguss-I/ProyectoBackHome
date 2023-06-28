@@ -11,6 +11,10 @@ export default class nivel2 extends Phaser.Scene {
     this.vida2 = true;
     this.vida1 = true;
     this.cuentaRegresiva = 5;
+    this.isJumping= false;
+    this.isWaiting = true;
+    this.chocando = false;
+    
   }
 
   create() {
@@ -105,7 +109,11 @@ export default class nivel2 extends Phaser.Scene {
 
     this.jugador.setCollideWorldBounds(true);
 
-    this.physics.add.collider(this.jugador, plataformaLayer);
+    this.physics.add.collider(this.jugador, plataformaLayer,()=>{
+      if(!this.isWaiting && !this.chocando){
+        this.jugador.anims.play("caminata", true);
+      }
+    }, null, this);
     this.physics.add.overlap(
       this.jugador,
       this.obstaculos,
@@ -149,16 +157,18 @@ export default class nivel2 extends Phaser.Scene {
     if (this.cursors.space.isDown && this.jugador.body.blocked.down) {
       this.jugador.anims.stop(true);
       this.jugador.anims.play("salto");
-      this.jugador.setVelocityY(-700);
+      this.jugador.setVelocityY(-750);
       this.isJumping = true;
       if (this.isJumping && this.jugador.body.blocked.down) {
         this.jugador.anims.stop("salto");
+        
         this.isJumping = false;
       }
     }
   }
 
   vidamenos(jugador, obstaculos) {
+    this.chocando= true,
     obstaculos.disableBody(true, true);
 
     this.vida--;
@@ -178,6 +188,7 @@ export default class nivel2 extends Phaser.Scene {
     setTimeout(() => {
       this.jugador.anims.stop();
       this.jugador.anims.play("caminata", true);
+      this.chocando = false;
     }, 100);
 
     this.isJumping = false;
@@ -186,13 +197,15 @@ export default class nivel2 extends Phaser.Scene {
     this.cuentaRegresiva--;
     this.cuentaRegresivaTexto.setText(+this.cuentaRegresiva);
     if (this.cuentaRegresiva <= 0) {
-      this.jugador.anims.play("caminata", true);
-      this.jugador.setVelocityX(500);
-
+      
+      this.jugador.setVelocityX(450);
+      if(this.isWaiting) {
+        
+        this.isWaiting = false;
+      }
       this.cuentaRegresivaTexto.setVisible(false);
+
     }
   }
-  juegoGanado(){
-    this.scene.start("final");
-  }
+    
 }
