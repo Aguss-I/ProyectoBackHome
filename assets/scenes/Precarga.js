@@ -96,7 +96,7 @@ create(){
     });
       
     
-      // Verifica el tiempo actual del video y realiza acciones adicionales si es necesario
+      
     
       
       

@@ -135,7 +135,7 @@ export default class nivel1 extends Phaser.Scene {
     
   }
   update() {
-    if (this.cursors.space.isDown && this.jugador.body.blocked.down) {
+    if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
       this.jugador.anims.stop(true);
       this.jugador.anims.play("salto");
       this.jugador.setVelocityY(-750);
