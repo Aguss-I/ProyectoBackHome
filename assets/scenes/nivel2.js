@@ -159,7 +159,7 @@ export default class nivel2 extends Phaser.Scene {
     });
     this.musicNivel2 = this.sound.add("musicanivel2");
     this.musicNivel2.play();
-    this.musicNivel2.setVolume(0.4)
+    this.musicNivel2.setVolume(0.3)
   }
   update() {
     

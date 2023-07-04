@@ -140,7 +140,7 @@ export default class nivel1 extends Phaser.Scene {
     });
     this.musicNivel1 = this.sound.add("musicanivel1");
     this.musicNivel1.play();
-    this.musicNivel1.setVolume(0.4)
+    this.musicNivel1.setVolume(0.3)
   }
   update() {
     this.cameras.main.setFollowOffset(-200,0);
@@ -160,7 +160,7 @@ export default class nivel1 extends Phaser.Scene {
   vidamenos(jugador, obstaculos) {
     this.sonidoGolpe = this.sound.add("sonidogolpe");
     this.sonidoGolpe.play();
-    this.sonidoGolpe.setVolume(2.5);
+    this.sonidoGolpe.setVolume(2);
     this.chocando = true;
     obstaculos.disableBody(true, true);
 
