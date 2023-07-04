@@ -88,11 +88,17 @@ export default class nivel1 extends Phaser.Scene {
 
     this.jugador.setCollideWorldBounds(true);
 
-    this.physics.add.collider(this.jugador, plataformaLayer,()=>{
-      if(!this.isWaiting && !this.chocando){
-        this.jugador.anims.play("caminata", true);
-      }
-    }, null, this);
+    this.physics.add.collider(
+      this.jugador,
+      plataformaLayer,
+      () => {
+        if (!this.isWaiting && !this.chocando) {
+          this.jugador.anims.play("caminata", true);
+        }
+      },
+      null,
+      this
+    );
     this.physics.add.overlap(
       this.jugador,
       this.obstaculos,
@@ -132,23 +138,29 @@ export default class nivel1 extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
-    
+    this.musicNivel1 = this.sound.add("musicanivel1");
+    this.musicNivel1.play();
+    this.musicNivel1.setVolume(0.4)
   }
   update() {
-    if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
+    this.cameras.main.setFollowOffset(-200,0);
+    if (this.cursors.space.isDown && this.jugador.body.blocked.down) {
       this.jugador.anims.stop(true);
       this.jugador.anims.play("salto");
       this.jugador.setVelocityY(-750);
       this.isJumping = true;
       if (this.isJumping && this.jugador.body.blocked.down) {
         this.jugador.anims.stop("salto");
-        
+
         this.isJumping = false;
       }
     }
   }
 
   vidamenos(jugador, obstaculos) {
+    this.sonidoGolpe = this.sound.add("sonidogolpe");
+    this.sonidoGolpe.play();
+    this.sonidoGolpe.setVolume(2.5);
     this.chocando = true;
     obstaculos.disableBody(true, true);
 
@@ -164,6 +176,9 @@ export default class nivel1 extends Phaser.Scene {
     if (this.vida <= 0) {
       this.vida3 = false;
       this.scene.pause("nivel1");
+      this.musicNivel1.stop();
+      this.musicaPerder=this.sound.add("musicaperder");
+      this.musicaPerder.play()
       this.scene.launch("perder");
     }
     setTimeout(() => {
@@ -173,10 +188,12 @@ export default class nivel1 extends Phaser.Scene {
     }, 100);
 
     this.isJumping = false;
-
   }
   nivelSuperado(jugador, salida) {
     salida.disableBody(true, true);
+    this.musicNivel1.stop();
+    this.musicaFinal= this.sound.add("musicafinal");
+    this.musicaFinal.play()
     this.scene.pause("nivel1");
     this.scene.launch("siguientenivel");
   }
@@ -185,13 +202,12 @@ export default class nivel1 extends Phaser.Scene {
     this.cuentaRegresivaTexto.setText(+this.cuentaRegresiva);
     if (this.cuentaRegresiva <= 0) {
       
+
       this.jugador.setVelocityX(400);
-      if(this.isWaiting) {
-        
+      if (this.isWaiting) {
         this.isWaiting = false;
       }
       this.cuentaRegresivaTexto.setVisible(false);
-
     }
   }
 }

@@ -17,7 +17,10 @@ export default class final extends Phaser.Scene {
       botonM.clearTint();
     });
     botonM.on("pointerdown", () => {
+      this.sound.play("sonidoboton");
+      this.musicaFinal.stop()
       this.scene.start("menuprincipalpantalla");
     });
+    
   }
 }

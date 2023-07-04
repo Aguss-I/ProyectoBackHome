@@ -19,7 +19,10 @@ create(){
     });
       botonS.on("pointerdown", () => {
         
-         this.scene.start("menuprincipalpantalla");})
+         this.scene.resume("menuprincipalpantalla");
+         this.scene.stop("creditos");
+        })
+         
 }
 
 }

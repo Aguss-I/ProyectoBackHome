@@ -18,6 +18,7 @@ export default class Siguientenivel extends Phaser.Scene {
       botonP.clearTint();
   });
     botonP.on("pointerdown", () => {
+      this.sound.play("sonidoboton");
       this.scene.stop("nivel1")
       
        this.scene.start("nivel2");})
@@ -31,6 +32,7 @@ export default class Siguientenivel extends Phaser.Scene {
       botonM.clearTint();
    });
    botonM.on("pointerdown",()=> {
+    this.sound.play("sonidoboton");
       this.scene.stop("nivel1")
       this.scene.start("menuprincipalpantalla");
    });

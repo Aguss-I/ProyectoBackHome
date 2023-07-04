@@ -49,6 +49,14 @@ preload() {
     this.load.image("final","./public/Images/casa.png");
     this.load.video("presentacion","./public/Images/Videoprecarga.mp4");
     this.load.image("pantallafinal","./public/Images/Final.png");
+    this.load.audio("sonidoboton","./public/Audios/sonidobotones.mp3");
+    this.load.audio("musicamenu","./public/Audios/perrofeliz.mp3");
+    this.load.audio("musicanivel1","./public/Audios/musicanivel1.mp3");
+    this.load.audio("sonidogolpe","./public/Audios/golpe.mp3");
+    this.load.audio("musicafinal","./public/Audios/musicavictoria.mp3");
+    this.load.audio("musicaperder","./public/Audios/sonidoderrota.mp3");
+    this.load.audio("musicanivel2","./public/Audios/musicanivel2.mp3");
+  
    
     
 }

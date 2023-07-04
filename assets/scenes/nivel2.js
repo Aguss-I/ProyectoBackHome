@@ -11,10 +11,9 @@ export default class nivel2 extends Phaser.Scene {
     this.vida2 = true;
     this.vida1 = true;
     this.cuentaRegresiva = 5;
-    this.isJumping= false;
+    this.isJumping = false;
     this.isWaiting = true;
     this.chocando = false;
-    
   }
 
   create() {
@@ -109,11 +108,17 @@ export default class nivel2 extends Phaser.Scene {
 
     this.jugador.setCollideWorldBounds(true);
 
-    this.physics.add.collider(this.jugador, plataformaLayer,()=>{
-      if(!this.isWaiting && !this.chocando){
-        this.jugador.anims.play("caminata", true);
-      }
-    }, null, this);
+    this.physics.add.collider(
+      this.jugador,
+      plataformaLayer,
+      () => {
+        if (!this.isWaiting && !this.chocando) {
+          this.jugador.anims.play("caminata", true);
+        }
+      },
+      null,
+      this
+    );
     this.physics.add.overlap(
       this.jugador,
       this.obstaculos,
@@ -152,24 +157,28 @@ export default class nivel2 extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+    this.musicNivel2 = this.sound.add("musicanivel2");
+    this.musicNivel2.play();
+    this.musicNivel2.setVolume(0.4)
   }
   update() {
-    if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
+    
+    if (this.cursors.space.isDown && this.jugador.body.blocked.down) {
       this.jugador.anims.stop(true);
       this.jugador.anims.play("salto");
       this.jugador.setVelocityY(-750);
       this.isJumping = true;
       if (this.isJumping && this.jugador.body.blocked.down) {
         this.jugador.anims.stop("salto");
-        
+
         this.isJumping = false;
       }
     }
   }
 
   vidamenos(jugador, obstaculos) {
-    this.chocando= true,
-    obstaculos.disableBody(true, true);
+    this.sound.play("sonidogolpe");
+    (this.chocando = true), obstaculos.disableBody(true, true);
 
     this.vida--;
     this.jugador.anims.stop(true);
@@ -182,7 +191,12 @@ export default class nivel2 extends Phaser.Scene {
 
     if (this.vida <= 0) {
       this.vida3 = false;
+
       this.scene.pause("nivel2");
+      this.musicNivel2.stop();
+      
+      this.musicaPerder=this.sound.add("musicaperder");
+      this.musicaPerder.play()
       this.scene.launch("perder2");
     }
     setTimeout(() => {
@@ -197,18 +211,18 @@ export default class nivel2 extends Phaser.Scene {
     this.cuentaRegresiva--;
     this.cuentaRegresivaTexto.setText(+this.cuentaRegresiva);
     if (this.cuentaRegresiva <= 0) {
-      
       this.jugador.setVelocityX(480);
-      if(this.isWaiting) {
-        
+      if (this.isWaiting) {
         this.isWaiting = false;
       }
       this.cuentaRegresivaTexto.setVisible(false);
-
     }
   }
-  juegoGanado(){
-    this.scene.start("final"); 
-  }
+  juegoGanado() {
+    this.musicNivel2.stop();
+    this.musicaFinal= this.sound.add("musicafinal");
+    this.musicaFinal.play()
     
+    this.scene.start("final");
+  }
 }

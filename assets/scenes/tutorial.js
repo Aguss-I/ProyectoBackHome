@@ -16,6 +16,8 @@ export default class tutorial extends Phaser.Scene {
     });
       botonS.on("pointerdown", () => {
         
-         this.scene.start("menuprincipalpantalla");})
+         this.scene.resume("menuprincipalpantalla");
+        this.scene.stop("tutorial");
+      })
   }
 }

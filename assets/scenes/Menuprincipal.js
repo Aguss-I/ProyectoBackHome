@@ -1,11 +1,7 @@
 export default class menuPrincipal extends Phaser.Scene {
   constructor() {
-    // key of the scene
-    // the key will be used to start the scene by other scenes
     super("menuprincipalpantalla");
   }
-
-  init() {}
 
   create() {
     this.add.image(400, 295, "Menuprincipalpantalla");
@@ -18,6 +14,11 @@ export default class menuPrincipal extends Phaser.Scene {
       botonJ.clearTint();
     });
     botonJ.on("pointerdown", () => {
+      this.musicMenu.stop()
+      
+      this.sound.play("sonidoboton");
+      
+      
       this.scene.start("nivel1");
     });
 
@@ -30,6 +31,8 @@ export default class menuPrincipal extends Phaser.Scene {
       botonC.clearTint();
     });
     botonC.on("pointerdown", () => {
+      this.sound.play("sonidoboton");
+      
       this.scene.pause("menurincipalpantalla");
       this.scene.launch("creditos");
     });
@@ -45,9 +48,16 @@ export default class menuPrincipal extends Phaser.Scene {
       botonT.clearTint();
     });
     botonT.on("pointerdown", () => {
+      this.sound.play("sonidoboton");
+      
       this.scene.pause("menuprincipalpantalla");
-
       this.scene.launch("tutorial");
     });
+    this.musicMenu=this.sound.add ("musicamenu");
+    this.musicMenu.play();
+
+    
+    
+    
   }
 }

@@ -16,6 +16,7 @@ export default class Perder2 extends Phaser.Scene {
         botonP.clearTint();
       });
       botonP.on("pointerdown", () => {
+        this.sound.play("sonidoboton");
         this.scene.stop("nivel2")
         this.scene.start("nivel1");
        
@@ -30,6 +31,7 @@ export default class Perder2 extends Phaser.Scene {
         botonM.clearTint();
       });
       botonM.on("pointerdown", () => {
+        this.sound.play("sonidoboton");
         this.scene.stop("nivel2");
         this.scene.start("menuprincipalpantalla");
       });
