@@ -1,5 +1,4 @@
-# Phaser 3 Template
+<img src="./Public/Images/logo.PNG" alt="logo" width= "300"
 
-Plantilla para iniciar nuevos proyectos con PHASER 3.
 
-Contiene configuración inicial y buenas prácticas de estructuras de carpetas.
+Link al GDD y TDD: https://drive.google.com/drive/u/0/folders/1MDv4Py73c4VjDtiCDv0pI1dwIyt_exPk
